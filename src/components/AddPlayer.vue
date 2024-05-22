@@ -12,9 +12,16 @@ interface PlayerProps{
 }
 defineProps<PlayerProps>()
 
-defineEmits<{
+const emit = defineEmits<{
     (e:'addPlayer', playerInput:string):void
 }>()
+
+const handleClick = () =>{
+    if (playerInput.value !== ""){
+        emit("addPlayer", playerInput.value);
+        playerInput.value = ""
+    }
+}
 
 </script>
 
@@ -24,7 +31,7 @@ defineEmits<{
     <p v-else-if="players.length == 1">Add player O:</p>
     
     <input type="text" v-model="playerInput">
-    <Button :my-button="buttonText" @click="$emit('addPlayer', playerInput)"/>
+    <Button :my-button="buttonText" @click="handleClick"/>
     </section>
     
 </template>

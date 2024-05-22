@@ -1,8 +1,9 @@
 export class Player {
   turn: boolean;
   points: number;
-  constructor(public playerName: string) {
+
+  constructor(public playerName: string, public id:number) {
     this.turn = false, 
-    this.points = 0;
+    this.points = 0
   }
 }

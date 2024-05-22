@@ -10,10 +10,14 @@ const state = ref<IGameState>({
   showHistory: false,
 });
 
+
+let currentID = 0
+
 const handlePlayer = (playerInput: string) => {
   if (playerInput.trim().length > 0) {
-    let player = new Player(playerInput);
+    let player = new Player(playerInput, currentID);
     state.value.players.push(player);
+    currentID++ 
   }
 };
 </script>
@@ -25,7 +29,7 @@ const handlePlayer = (playerInput: string) => {
     @add-player="handlePlayer"
   />
 
-  <ShowGame :players="state.players" />
+  <ShowGame v-else :players="state.players" />
 
 
 </template>
